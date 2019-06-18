@@ -20,8 +20,13 @@ pv_x_set.connectAndWait(1.5)
 pv_x = ChannelFactory.defaultFactory().getChannel("Slit:x")
 pv_x.connectAndWait(1.5)
 
-dest = float(sys.argv[1])
-pv_x_set.putVal(dest)
+if len(sys.argv) >1 :
+    dest = float(sys.argv[1])
+    pv_x_set.putVal(dest)
+else:
+   rb=pv_x.getValDbl()
+   print 'Current position',rb
+   exit(0)
 
 while 2 > 1:
     rb=pv_x.getValDbl()
